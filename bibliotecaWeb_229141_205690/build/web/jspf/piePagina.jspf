@@ -1,0 +1,12 @@
+<%--
+    piePagina.jspf
+
+    Este fragmento de página JSP contiene el pie de pagina de la aplicación Web
+    Biblioteca Web versión JSP.
+--%>
+
+<%@ page pageEncoding="UTF-8" %>
+<footer>
+    <p>Realizado por José Jesús Orozco Hernandez && Carlos Alfonso Sauceda Cervantes && Abraham Gomez<br/>
+        </p>
+</footer>

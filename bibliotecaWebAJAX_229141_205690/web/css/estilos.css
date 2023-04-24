@@ -1,0 +1,222 @@
+
+body {
+    font-family: Arial sans-serif;
+    margin: 0;
+    padding: 0;
+    background: ghostwhite;
+    background-image: url("../imagenes/fondo.png")
+}
+
+.contenedorGrid {
+    display: grid;
+    grid-template-rows: 152px calc(100vh - 268px) 100px;
+    grid-template-columns: 241px calc(100vw - 201px);
+}
+
+header {
+    grid-column: 1 / span 2;
+    border-bottom: 1px solid black;
+    text-align: center;
+
+}
+
+nav {
+    border-right: 1px solid black;
+}
+
+main {
+    overflow: scroll;
+    text-align: center;
+
+}
+
+main h1 {
+    font-size: 30px;
+    font-family: arial;
+}
+
+main p {
+    font-size: 20px;
+    font-family: arial;
+
+}
+
+footer {
+    grid-column: 1 / span 2;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+nav button {
+    width: 240px;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    color: #000;
+    background-color: cyan;
+    border: 1px solid black;
+}
+
+nav button :link {
+    color: Blue;
+}
+
+nav button :visited {
+    color: crimson;
+    font-style: italic;
+}
+
+nav button:hover {
+    color: white;
+    background-color: gray;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.contenedorFormulario {
+    display: grid;
+    margin: auto;
+    grid-template-columns: 45% 15% auto;
+    gap: 5px;
+}
+
+.contenedorFormulario>div.span {
+    grid-column: 1 / span 3;
+
+}
+
+
+.contenedorFormulario>div.centrada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contenedorFormulario>div.derecha {
+    text-align: right;
+    font-size: 25px
+}
+
+.contenedorFormulario div input[type="text"] {
+    height: 20px;
+    font-size: 20px
+}
+.contenedorFormulario div input[type="date"] {
+    height: 20px;
+    font-size: 20px
+}
+
+.contenedorFormulario div input[type="number"] {
+    height: 25px;
+    width: 200px;
+    font-size: 20px
+}
+
+
+.contenedorFormulario div select{
+    height: 25px;
+    width: 200px;
+    font-size: 20px
+}
+.centrada {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bicolor {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    font-size: 20px;
+}
+
+caption {
+    caption-side: top;
+    margin-bottom: 0.5em;
+    margin-top: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+
+}
+
+th {
+    text-align: center;
+    background-color: #ddd;
+    border: 1px solid #888;
+}
+
+.error {
+    text-align: right;
+    padding-right: 5px;
+    background-color: #fff;
+    border-style: none;
+}
+
+.derecha {
+    text-align: right;
+    padding-right: 5px;
+    font-size: 23px
+}
+
+.gris {
+    background-color: #ddd;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #888;
+    font-size: 23px
+}
+
+.bicolor td {
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #888;
+    background-color: #fff;
+}
+
+.msjError {
+    color: red;
+    padding-left: 5px;
+}
+
+.msjAviso {
+    color: green;
+    white-space: pre;
+    padding-left: 5px;
+}
+
+input[readonly] {
+    background-color: #ddd;
+}
+
+
+.botones {
+    background: blue;
+    text-align: center;
+    font-size: 20px;
+    margin: 4px;
+    color: white;
+    font-family: Arial;
+}
+
+.botones:hover {
+    background: yellow;
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+    margin: 4px;
+    font-family: Arial;
+}
+.salida{
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial;
+    background-color: red;
+}
+
