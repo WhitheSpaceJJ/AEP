@@ -1,0 +1,16 @@
+<%--
+
+    menuInventario.jspf
+    Este fragmento de página JSP contiene el menú de inventario  de la aplicación Web
+    Biblioteca Web versión JSP.
+
+--%>
+
+
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+    <a href="capturaRevistaInventariar.jsp">Inventariar</a></li>
+<a href="capturaRevistaDesinventariar.jsp">Desinventariar</a></li>
+<a href="despliegaInventarioRevistas.jsp">Consultar</a></li>
+<a href="menuPrincipal.jsp">Regresar</a></li>
+</nav>

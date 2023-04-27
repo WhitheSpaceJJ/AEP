@@ -1,0 +1,18 @@
+<%--
+    menuRevistas.jspf
+
+
+    Este fragmento de página JSP contiene el menú de revistas de la aplicación Web
+    Biblioteca Web versión JSP.
+
+--%>
+
+
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+    <a href="capturaIsbn.jsp">Agregar</a></li>
+<a href="seleccionaRevistaActualizar.jsp">Actualizar</a></li>
+<a href="seleccionaRevistasEliminar.jsp">Eliminar</a></li>
+<a href="despliegaRevistas.jsp">Consultar</a></li>
+<a href="menuPrincipal.jsp">Regresar</a></li>
+</nav>
