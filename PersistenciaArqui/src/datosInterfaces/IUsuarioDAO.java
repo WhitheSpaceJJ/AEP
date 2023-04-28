@@ -2,7 +2,7 @@ package datosInterfaces;
 
 import entidades.Revista;
 import java.util.List;
-import usuarios.Usuario;
+import entidades.Usuario;
 
 public interface IUsuarioDAO {
 

@@ -47,6 +47,7 @@ public class RevistaResource {
             Peticion peticion
                     = consumidor.call(new Peticion(new Random().nextInt(1000),
                             TipoPeticion.CONSULTA_REVISTA, Calendar.getInstance().getTime(), Prioridad.ALTA, objetos));
+
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion != null) {

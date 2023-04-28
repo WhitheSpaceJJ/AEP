@@ -3,7 +3,10 @@ package datos;
 import conexion.ConexionBD;
 import datosInterfaces.IConexionBD;
 import datosInterfaces.IUsuarioDAO;
+import entidades.Peticion;
+import entidades.Prioridad;
 import entidades.Revista;
+import entidades.TipoPeticion;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -12,7 +15,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import usuarios.Usuario;
+import entidades.Usuario;
 
 public class UsuariossDAO implements IUsuarioDAO {
 
@@ -80,7 +83,6 @@ public Usuario consultar(String email, String password) {
         em.getTransaction().commit();
         return usuario;
     } catch (NoResultException e) {
-        // Si no se encuentra un usuario con el email y contraseña proporcionados, devolver null
         return null;
     } catch (IllegalStateException e) {
         System.err.println("No se pudo consultar el usuario");
