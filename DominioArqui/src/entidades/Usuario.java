@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
@@ -28,9 +30,10 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "password", nullable = false, length = 45)
     private String password;
-    @Basic(optional = false)
-    @Column(name = "tipo", nullable = false, length = 7)
-    private String tipo;
+@Basic(optional = false)
+@Column(name = "tipo", nullable = false)
+@Enumerated(EnumType.STRING)
+private TipoUsuario tipo;
 
     public Usuario() {
     }
@@ -39,7 +42,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Usuario(String email, String password, String tipo) {
+    public Usuario(String email, String password, TipoUsuario tipo) {
         this.email = email;
         this.password = password;
         this.tipo = tipo;
@@ -61,11 +64,11 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public String getTipo() {
+    public TipoUsuario  getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoUsuario tipo) {
         this.tipo = tipo;
     }
 

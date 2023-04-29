@@ -75,7 +75,6 @@ public Usuario consultar(String email, String password) {
     try {
         EntityManager em = this.conexion.crearConexion();
         em.getTransaction().begin();
-        // Ejecutar una consulta JPQL para buscar un usuario por email y contraseña
         Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email AND u.password = :password");
         query.setParameter("email", email);
         query.setParameter("password", password);

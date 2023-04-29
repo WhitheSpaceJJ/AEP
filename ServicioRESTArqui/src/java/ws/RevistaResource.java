@@ -43,7 +43,7 @@ public class RevistaResource {
         try {
             Consumidor consumidor = new Consumidor();
             Object[] objetos = new Object[1];
-            objetos[0] = Integer.valueOf(id);
+            objetos[0] = Long.valueOf(id);
             Peticion peticion
                     = consumidor.call(new Peticion(new Random().nextInt(1000),
                             TipoPeticion.CONSULTA_REVISTA, Calendar.getInstance().getTime(), Prioridad.ALTA, objetos));
@@ -51,9 +51,19 @@ public class RevistaResource {
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion != null) {
-                Revista revistaABuscar = (Revista) peticion.getCuerpo()[0];
-                System.out.println(revistaABuscar);
-                return Response.ok().entity(revistaABuscar).build();
+                Revista revista = (Revista) peticion.getCuerpo()[0];
+                System.out.println(revista);
+
+                JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+                JsonObjectBuilder revistaJsonBuilder = Json.createObjectBuilder()
+                        .add("isbn", ((Revista) revista).getIsbn())
+                        .add("titulo", ((Revista) revista).getTitulo())
+                        .add("editorial", ((Revista) revista).getEditorial())
+                        .add("clasificacion", ((Revista) revista).getClasificacion());
+                jsonArrayBuilder.add(revistaJsonBuilder.build());
+                JsonArray jsonArray = jsonArrayBuilder.build();
+                System.out.println(jsonArray.toString());
+                return Response.ok().entity(jsonArray.toString()).build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
@@ -113,10 +123,19 @@ public class RevistaResource {
                             Prioridad.ALTA, objetos));
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
-            } else if (peticion.getCuerpo() != null && peticion.getCuerpo().length > 0 && peticion.getCuerpo()[0] instanceof Boolean && (boolean) peticion.getCuerpo()[0] == true && peticion != null) {
-                Revista revistaABuscar = (Revista) peticion.getCuerpo()[0];
-                System.out.println(revistaABuscar);
-                return Response.ok().entity(revistaABuscar).build();
+            } else if (peticion.getCuerpo() != null && peticion.getCuerpo().length > 0 && peticion.getCuerpo()[0] instanceof Boolean && (boolean) peticion.getCuerpo()[0] == true ) {
+                Revista revista = (Revista) peticion.getCuerpo()[1];
+                System.out.println(revista);
+                JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+                JsonObjectBuilder revistaJsonBuilder = Json.createObjectBuilder()
+                        .add("isbn", ((Revista) revista).getIsbn())
+                        .add("titulo", ((Revista) revista).getTitulo())
+                        .add("editorial", ((Revista) revista).getEditorial())
+                        .add("clasificacion", ((Revista) revista).getClasificacion());
+                jsonArrayBuilder.add(revistaJsonBuilder.build());
+                JsonArray jsonArray = jsonArrayBuilder.build();
+                System.out.println(jsonArray.toString());
+                return Response.ok().entity(jsonArray.toString()).build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
@@ -133,7 +152,7 @@ public class RevistaResource {
         try {
             Consumidor consumidor = new Consumidor();
             Object[] objetos = new Object[1];
-            objetos[0] = Integer.valueOf(id);
+            objetos[0] = Long.valueOf(id);
             Peticion peticion
                     = consumidor.call(new Peticion(new Random().nextInt(1000),
                             TipoPeticion.ELIMINAR_REVISTA, Calendar.getInstance().getTime(),
@@ -141,9 +160,19 @@ public class RevistaResource {
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion.getCuerpo().length > 0 && peticion.getCuerpo()[0] instanceof Boolean && (boolean) peticion.getCuerpo()[0] == true && peticion != null) {
-                Revista revistaABuscar = (Revista) peticion.getCuerpo()[0];
-                System.out.println(revistaABuscar);
-                return Response.ok().entity(revistaABuscar).build();
+                Revista revista = (Revista) peticion.getCuerpo()[1];
+                System.out.println(revista);
+
+                JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+                JsonObjectBuilder revistaJsonBuilder = Json.createObjectBuilder()
+                        .add("isbn", ((Revista) revista).getIsbn())
+                        .add("titulo", ((Revista) revista).getTitulo())
+                        .add("editorial", ((Revista) revista).getEditorial())
+                        .add("clasificacion", ((Revista) revista).getClasificacion());
+                jsonArrayBuilder.add(revistaJsonBuilder.build());
+                JsonArray jsonArray = jsonArrayBuilder.build();
+                System.out.println(jsonArray.toString());
+                return Response.ok().entity(jsonArray.toString()).build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
@@ -168,9 +197,18 @@ public class RevistaResource {
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion.getCuerpo().length > 0 && peticion.getCuerpo()[0] instanceof Boolean && (boolean) peticion.getCuerpo()[0] == true && peticion != null) {
-                Revista productoABuscar = (Revista) peticion.getCuerpo()[0];
-                System.out.println(productoABuscar);
-                return Response.ok().entity(productoABuscar).build();
+                           Revista revista = (Revista) peticion.getCuerpo()[1];
+                System.out.println(revista);
+                JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+                JsonObjectBuilder revistaJsonBuilder = Json.createObjectBuilder()
+                        .add("isbn", ((Revista) revista).getIsbn())
+                        .add("titulo", ((Revista) revista).getTitulo())
+                        .add("editorial", ((Revista) revista).getEditorial())
+                        .add("clasificacion", ((Revista) revista).getClasificacion());
+                jsonArrayBuilder.add(revistaJsonBuilder.build());
+                JsonArray jsonArray = jsonArrayBuilder.build();
+                System.out.println(jsonArray.toString());
+                return Response.ok().entity(jsonArray.toString()).build();
             } else {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }

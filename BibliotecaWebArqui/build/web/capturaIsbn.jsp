@@ -1,16 +1,6 @@
-<%-- 
-capturarIsbn.jsp 
-Esta página JSP es de la página del catalogo de revistas cuando se selecciona 
-agregar revista estas es llamada para la captura del isbn de una revista a agregar para 
-la aplicación Web Biblioteca Web.
---%>
-
-<!DOCTYPE html>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-
+<!DOCTYPE html>
 <html>
-    <%-- Incluye el titulo de la pagina --%>
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/estilos.css" />
@@ -18,36 +8,68 @@ la aplicación Web Biblioteca Web.
     </head>
     <body>
         <div class="contenedorGrid">
-            <%-- Incluye el encabezado de la pagina --%>
             <%@include file="jspf/encabezado.jspf" %>
-
-            <%-- Incluye el menu de revistas catalogo --%>
-            <%@include file="jspf/menuRevistas.jspf" %>
-
-            <%-- Main Principal --%>
+            <nav>
+                <a href="capturarIsbn.jsp">Agregar</a>
+                <a href="seleccionaRevistaActualizar.jsp">Actualizar</a>
+                <a href="seleccionaRevistasEliminar.jsp">Eliminar</a>
+                <a href="despliegaRevistas.jsp">Consultar</a>
+                <a href="menuPrincipalBibliotecario.jsp">Regresar</a>
+            </nav>
             <main>
                 <h1>Agregar Revista</h1>
+                <form action="capturaRevista.jsp" method="post" name="capturaISBN">
                     <div class="contenedorFormulario">
-                        <div class="derecha"><label for="isbnId" >ISBN*</label></div>
+                        <div class="derecha">
+                            <label for="isbnId" >ISBN*</label>
+                        </div>
                         <div>
-                            <input type="text" id="isbnId" name="isbn" 
-                                   value="${param.isbn}" size="13" maxlength="13" value="1" min="1" id="number" name="number" pattern="^[1-9]\d*$"
-                                   title="Entero positivo de 13 cifras maximo"
+                            <input type="text" id="isbnId" name="isbn" value="${param.isbn}"
+                                   size="13" maxlength="13" min="1" pattern="^[1-9]\d*$" 
+                                   title="Entero positivo de 13 cifras maximo" 
                                    placeholder="1234567891234" required />
                         </div>
                         <div id="msjClave" class="${mensajes.isbn.claseMensaje}">
                             ${mensajes.isbn.mensaje}
                         </div>
+                        <div class="span centrada"></div>
                         <div class="span centrada">
-                        </div>
-                        <div class="span centrada">
-                            <input type="submit" name="boton" value="Continuar" class="botones"/>
+                            <input type="submit" id="continuarButton" name="boton" 
+                                   onclick="enviarFormulario()" value="Continuar" class="botones"/>
                             <input type="reset" value="Limpiar" class="botones"/>
                         </div>
                     </div>
-
+                </form>
             </main>
-            <%-- Incluye el pie de pagina --%>
+
+            <script>
+                function enviarFormulario() {
+                    const isbn = document.getElementById('isbnId').value;
+                    const url = 'http://localhost:8080/ServidorRESTArqui/webresources/revista/' + isbn;
+                    fetch(url)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener una respuesta del servidor.');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                alert("" + JSON.stringify(data));
+                                const url = "despliegaRevista.jsp?data=" + encodeURIComponent(JSON.stringify(data));
+                                window.location.href = url;
+                            })
+                            .catch(error => {
+                                alert("" + error);
+                                console.error('Se produjo un error al intentar realizar la petición:', error.message);
+                                const url = "capturaRevista.jsp?isbn=" + encodeURIComponent(isbn);
+                                window.location.href = url;
+                            });
+
+                }
+            </script>
+
+
+
             <%@include file="jspf/piePagina.jspf" %>
         </div>
     </body>

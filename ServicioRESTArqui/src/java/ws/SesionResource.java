@@ -28,7 +28,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("revista")
+@Path("sesion")
 public class SesionResource {
 
     @Context
@@ -50,7 +50,6 @@ public class SesionResource {
             Peticion peticion
                     = consumidor.call(new Peticion(new Random().nextInt(1000),
                             TipoPeticion.SESSION_USUARIO, Calendar.getInstance().getTime(), Prioridad.ALTA, consultas));
-
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion != null) {
@@ -78,6 +77,7 @@ public class SesionResource {
                     = consumidor.call(new Peticion(new Random().nextInt(1000),
                             TipoPeticion.REGISTRAR_USUARIO, Calendar.getInstance().getTime(),
                             Prioridad.ALTA, objetos));
+            
             if (peticion == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             } else if (peticion.getCuerpo() != null && peticion.getCuerpo().length > 0 && peticion.getCuerpo()[0] instanceof Boolean && (boolean) peticion.getCuerpo()[0] == true && peticion != null) {

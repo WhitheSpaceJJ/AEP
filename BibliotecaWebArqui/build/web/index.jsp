@@ -85,6 +85,7 @@
                 }
             }
         </style>
+
     </head>
     <body>
         <div class="login">
@@ -96,5 +97,40 @@
             <input type="password" id="password" name="password">
             <button id="submit-btn" onclick="validarCampos()">Ingresar</button>
         </div>
+        <script>
+            function validarCampos() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                // Validar que se haya ingresado un correo electrónico y una contraseña
+                if (email === "" || password === "") {
+                    alert('Por favor, ingrese su correo electrónico y contraseña.');
+                } else {
+                    // alert('Usuario ' + email + ', Contrasena ' + password);
+                    //   window.location.href = 'menuPrincipalBibliotecario.jsp';
+                    //           window.location.href = 'menuPrincipalUsuarios.jsp';       
+                    // Hacer una solicitud a la API Fetch para llamar al método "sesion" en el servidor REST
+
+                    fetch('http://localhost:8080/ServidorRESTArqui/webresources/sesion/query?email=' + email + '&password=' + password)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('No se pudo obtener una respuesta del servidor.');
+                                }
+                                return response.json();
+                            })
+                            .then(usuario => {
+                                if (usuario.tipo === "ADMIN") {
+                                    alert('Bienvenido ' + usuario.email + usuario.password + usuario.tipo + '!');
+                                    window.location.href = "menuPrincipalBibliotecario.jsp";
+                                } else {
+                                    alert('Bienvenido ' + usuario.email + usuario.password + usuario.tipo + '!');
+                                    window.location.href = "menuPrincipalUsuarios.jsp";
+                                }
+                            })
+                            .catch(error => {
+                                alert(`Se produjo un error al intentar iniciar sesión: ${error.message}`);
+                            });
+                }
+            }
+        </script>
     </body>
 </html>

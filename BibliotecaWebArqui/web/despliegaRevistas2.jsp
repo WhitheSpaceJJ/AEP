@@ -26,15 +26,9 @@ aplicación Web Biblioteca Web.
             <%-- Incluye el encabezado de la pagina --%>
             <%@include file="jspf/encabezado.jspf" %>
 
-
             <nav>
-                <a href="capturaIsbn.jsp">Agregar</a></li>
-                <a href="seleccionaRevistaActualizar.jsp">Actualizar</a></li>
-                <a href="seleccionaRevistasEliminar.jsp">Eliminar</a></li>
-                <a href="despliegaRevistas.jsp">Consultar</a></li>
-                <a href="menuPrincipalBibliotecario.jsp">Regresar</a></li>
+                <a href="menuPrincipalUsuarios.jsp">Regresar</a></li>
             </nav>
-
             <main>
                 <table id="tablaRevistas" class="bicolor" style="display:none">
                     <caption>
@@ -90,7 +84,6 @@ aplicación Web Biblioteca Web.
                         })
                         .catch(error => {
                             alert(`Se produjo un error al intentar consultar las revistas: ${error.message}`);
-                            window.location.href = "capturaIsbn.jsp";
                         });
             });
         </script>

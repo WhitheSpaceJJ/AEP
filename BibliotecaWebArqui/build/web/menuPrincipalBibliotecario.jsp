@@ -15,8 +15,10 @@
                 <img alt="logo2" src="imagenes/logo2.png" width="800" height="150">
             </header>
 
-            <%-- Incluye el menu principal --%>
-            <%@include file="jspf/menuPpal.jspf" %>
+            <nav>
+                <a href="revistas.jsp">Catálogo de revistas</a></li>
+                <%--<a href="inventario.jsp">Inventario de revistas</a></li>--%>
+            </nav>
 
             <%-- Main o mensaje de bienvenida --%>
             <main>

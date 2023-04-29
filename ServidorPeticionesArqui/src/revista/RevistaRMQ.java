@@ -39,7 +39,7 @@ public class RevistaRMQ {
 
         channel.basicQos(1);
 
-        System.out.println(" [x] Awaiting RPC requests");
+        System.out.println(" [x] Awaiting RPC requests, revistas");
 
         DeliverCallback deliverCallback = (var consumerTag, var delivery) -> {
             AMQP.BasicProperties replyProps = new AMQP.BasicProperties.Builder()
@@ -98,13 +98,16 @@ public class RevistaRMQ {
                     IRevistaDAO conexion = new RevistasDAO();
                     boolean actualizado = conexion.actualizar((Revista) peticion.getCuerpo()[0]);
                     if (actualizado) {
-                        Object[] objetos = new Object[1];
+                        Object[] objetos = new Object[2];
                         objetos[0] = true;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
+
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.BAJA);
                     } else {
-                        Object[] objetos = new Object[1];
+                        Object[] objetos = new Object[2];
                         objetos[0] = false;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.ALTA);
                     }
@@ -119,13 +122,15 @@ public class RevistaRMQ {
                     IRevistaDAO conexion = new RevistasDAO();
                     boolean agregado = conexion.agregar(((Revista) peticion.getCuerpo()[0]));
                     if (agregado) {
-                        Object[] objetos = new Object[1];
+                        Object[] objetos = new Object[2];
                         objetos[0] = true;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.BAJA);
                     } else {
-                        Object[] objetos = new Object[1];
+                        Object[] objetos = new Object[2];
                         objetos[0] = false;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.ALTA);
                     }
@@ -139,13 +144,16 @@ public class RevistaRMQ {
                     IRevistaDAO conexion = new RevistasDAO();
                     boolean eliminado = conexion.eliminar(((long) peticion.getCuerpo()[0]));
                     if (eliminado) {
-                        Object[] objetos = new Object[1];
+                                      Object[] objetos = new Object[2];
                         objetos[0] = true;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
+
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.BAJA);
                     } else {
-                        Object[] objetos = new Object[1];
+                                   Object[] objetos = new Object[2];
                         objetos[0] = false;
+                        objetos[1] = (Revista) peticion.getCuerpo()[0];
                         peticion.setCuerpo(objetos);
                         peticion.setPrioridad(Prioridad.BAJA);
                     }
