@@ -1,0 +1,12 @@
+<%--
+    titulo.jspf
+
+    Este fragmento de página JSP contiene la cabeza de la aplicación Web
+    Biblioteca Web versión JSP.
+--%>
+<%@ page pageEncoding="UTF-8" %>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <title>Biblioteca Web</title>
+</head>

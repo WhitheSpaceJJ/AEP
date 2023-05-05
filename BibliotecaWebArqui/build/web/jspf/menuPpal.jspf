@@ -1,0 +1,15 @@
+<%--
+    menuPpal.jspf
+
+
+    Este fragmento de página JSP contiene el menú principal de la aplicación Web
+    Biblioteca Web versión JSP.
+
+--%>
+
+
+<%@ page pageEncoding="UTF-8" %>
+<nav>
+    <a href="revistas.jsp">Catálogo de revistas</a></li>
+<%--<a href="inventario.jsp">Inventario de revistas</a></li>--%>
+</nav>

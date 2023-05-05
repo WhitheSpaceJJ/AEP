@@ -1,0 +1,11 @@
+<%--
+    encabezado.jspf
+
+    Este fragmento de página JSP contiene el encabezado de la aplicación Web
+    Biblioteca Web versión JSP.
+--%>
+
+<%@ page pageEncoding="UTF-8" %>
+<header>
+    <img alt="logo2" src="imagenes/logo2.png" width="800" height="150">
+</header>
