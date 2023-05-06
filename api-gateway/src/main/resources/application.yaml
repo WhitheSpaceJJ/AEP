@@ -20,18 +20,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: supermercado-service
-          uri: lb://supermercado-service
+        - id: revista-service
+          uri: lb://revista-service
           predicates:
-            - Path=/supermercado/**
+            - Path=/revista/**
             
-        - id: consumidor-service
-          uri: lb://consumidor-service
-          predicates:
-            - Path=/consumidor/**
-            
-        - id: profeco-service
-          uri: lb://profeco-service
-          predicates:
-            - Path=/profeco/**
+        
            

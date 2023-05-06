@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dailycodebuffer</groupId>
-    <artifactId>servicio_revistas</artifactId>
+    <artifactId>revista-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>servicio_revistas</name>
+    <name>revista-service</name>
     <description>Demo project for Spring Boot</description>
      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

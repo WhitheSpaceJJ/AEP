@@ -1,5 +1,6 @@
 package com.controller.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entidades.Peticion;
 import entidades.Prioridad;
 import entidades.Revista;
@@ -36,8 +37,8 @@ import ws.ConsumidorSesion;
 public class SesionResource {
 
     @GetMapping("/query")
-    public ResponseEntity<Usuario> sesion(@RequestParam("email") String email, @RequestParam("password") String password) {
-       Object[] consultas = new String[4];
+    public ResponseEntity<String> sesion(@RequestParam("email") String email, @RequestParam("password") String password) {
+    Object[] consultas = new String[4];
         consultas[0] = email != null ? email.replace("\\n", "") : null;
         consultas[1] = password != null ? password.replace("\\n", "") : null;
 
@@ -50,7 +51,8 @@ public class SesionResource {
                  return ResponseEntity.unprocessableEntity().build();
             } else if (peticion.getCuerpo() != null && peticion != null) {
                 Usuario user = (Usuario) peticion.getCuerpo()[0];
-                return ResponseEntity.ok(user);
+                ObjectMapper objeto=new ObjectMapper();
+                return ResponseEntity.ok(objeto.writeValueAsString(user));
             } else {
                  return ResponseEntity.unprocessableEntity().build();
             }
